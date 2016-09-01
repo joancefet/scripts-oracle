@@ -1,0 +1,30 @@
+SELECT pctg.sym 'Categoria'
+      
+   ,CASE cr_flag
+    WHEN 1 THEN 'SIM'
+    ELSE 'NÃO'
+    END 'Elegível_RDI?'
+
+   ,CASE in_flag
+    WHEN 1 THEN 'SIM'
+    ELSE 'NÃO'
+    END 'Elegível_Incidente?'
+
+    ,CASE pr_flag
+    WHEN 1 THEN 'SIM'
+    ELSE 'NÃO'
+    END 'Elegível_Problema?'
+
+     ,'Não' 'Elegível_RDS?'
+
+FROM prob_ctg pctg
+
+UNION ALL
+
+SELECT isc.sym 'Categoria'
+   ,'Não' 'Elegível_RDI?'
+   ,'Não' 'Elegível_Incidente?'
+   ,'Não' 'Elegível_Problema?'
+   ,'Sim' 'Elegível_RDS?'
+
+ FROM isscat isc
